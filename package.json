@@ -1,0 +1,39 @@
+{
+  "name": "devops-node-jenkins-project",
+  "version": "1.0.0",
+  "description": "Node.js DevOps project with Jenkins CI/CD pipeline",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "build": "mkdir -p dist && cp app.js dist/app.js && cp package.json dist/package.json",
+    "test": "jest --coverage",
+    "test:ci": "jest --coverage --ci --reporters=default --reporters=jest-junit",
+    "lint": "echo \"No lint configured\"",
+    "sonar": "npx sonar-scanner"
+  },
+  "keywords": [
+    "devops",
+    "jenkins",
+    "nodejs",
+    "ci-cd",
+    "testing"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0",
+    "jest-junit": "^16.0.0",
+    "sonarqube-scanner": "^3.0.1"
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "coverageDirectory": "coverage",
+    "coverageReporters": [
+      "text",
+      "lcov"
+    ]
+  }
+}
