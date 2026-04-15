@@ -28,8 +28,11 @@ app.use((req, res) => {
 });
 
 app.use((err, req, res, next) => {
-  res.status(400).json({
-    error: err.message || "Unexpected error",
+  const statusCode = err.status || 400;
+  res.status(statusCode).json({
+    success: false,
+    message: err.message || "Unexpected error",
+    timestamp: new Date().toISOString()
   });
 });
 
