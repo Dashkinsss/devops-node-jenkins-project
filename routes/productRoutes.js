@@ -8,13 +8,25 @@ const {
 const router = express.Router();
 
 router.get("/", (req, res) => {
-  const { category } = req.query;
+  const { category, minPrice, maxPrice } = req.query;
+
+  let result = getAllProducts();
 
   if (category) {
-    return res.json(getProductsByCategory(category));
+    result = result.filter(
+      (p) => p.category.toLowerCase() === category.toLowerCase(),
+    );
   }
 
-  return res.json(getAllProducts());
+  if (minPrice) {
+    result = result.filter((p) => p.price >= Number(minPrice));
+  }
+
+  if (maxPrice) {
+    result = result.filter((p) => p.price <= Number(maxPrice));
+  }
+
+  return res.json(result);
 });
 
 router.get("/:id", (req, res) => {
