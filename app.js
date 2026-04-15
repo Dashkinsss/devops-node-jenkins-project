@@ -2,9 +2,11 @@ const express = require("express");
 const healthRoutes = require("./routes/healthRoutes");
 const productRoutes = require("./routes/productRoutes");
 const cartRoutes = require("./routes/cartRoutes");
+const requestLogger = require("./middleware/logger");
 
 const app = express();
 
+app.use(requestLogger);
 app.use(express.json());
 
 app.use("/health", healthRoutes);
