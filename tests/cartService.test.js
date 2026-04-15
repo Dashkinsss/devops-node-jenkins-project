@@ -27,6 +27,6 @@ describe("cartService", () => {
   });
 
   test("throws error for invalid input", () => {
-    expect(() => calculateCartTotal("wrong")).toThrow("Items must be an array");
+    expect(() => calculateCartTotal([])).toThrow("Cart must contain at least one item");
   });
 });
