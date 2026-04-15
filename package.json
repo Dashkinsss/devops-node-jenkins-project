@@ -2,13 +2,12 @@
   "name": "devops-node-jenkins-project",
   "version": "1.0.0",
   "description": "Node.js DevOps project with Jenkins CI/CD pipeline",
-  "main": "app.js",
+  "main": "server.js",
   "scripts": {
-    "start": "node app.js",
-    "build": "mkdir -p dist && cp app.js dist/app.js && cp package.json dist/package.json",
+    "start": "node server.js",
+    "build": "rm -rf dist && mkdir -p dist/routes dist/services dist/data dist/utils && cp app.js server.js dist/ && cp routes/*.js dist/routes/ && cp services/*.js dist/services/ && cp data/*.js dist/data/ && cp utils/*.js dist/utils/",
     "test": "jest --coverage",
     "test:ci": "jest --coverage --ci --reporters=default --reporters=jest-junit",
-    "lint": "echo \"No lint configured\"",
     "sonar": "npx sonar-scanner"
   },
   "keywords": [
