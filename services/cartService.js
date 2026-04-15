@@ -1,13 +1,7 @@
 function calculateCartTotal(items) {
-<<<<<<< Updated upstream
- if (!Array.isArray(items) || items.length === 0) {
-  throw new Error("Cart must contain at least one item");
-    }
-=======
   if (!Array.isArray(items) || items.length === 0) {
     throw new Error("Cart must contain at least one item");
   }
->>>>>>> Stashed changes
 
   return items.reduce((total, item) => {
     if (
