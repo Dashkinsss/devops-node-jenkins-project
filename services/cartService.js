@@ -1,13 +1,13 @@
 function calculateCartTotal(items) {
- if (!Array.isArray(items) || items.length === 0) {
-  throw new Error("Cart must contain at least one item");
-    }
+  if (!Array.isArray(items)) {
+    throw new Error("Items must be an array");
+  }
 
   return items.reduce((total, item) => {
     if (
       typeof item.price !== "number" ||
       typeof item.quantity !== "number" ||
-      item.quantity <= 0
+      item.quantity < 0
     ) {
       throw new Error("Invalid cart item");
     }
